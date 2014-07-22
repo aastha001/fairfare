@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
@@ -28,6 +27,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	private String provider;
 	Location myLocation;
 	LatLng myLatLng;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,12 +52,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 
 	        // Getting LocationManager object from System Service LOCATION_SERVICE
 	        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-	       
-	        
-	        
-	       
-	        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+	       if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 	        {
 	        	provider=LocationManager.GPS_PROVIDER;
 	        	
@@ -71,13 +66,13 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		        // Getting the name of the best provider
 		        provider = locationManager.getBestProvider(criteria, true);
 	        }
-	        locationManager.requestLocationUpdates(provider, 1000, 5, this);
+	        locationManager.requestLocationUpdates(provider, 400, 5, this);
 	        // Getting Current Location
 	        myLocation = locationManager.getLastKnownLocation(provider);
 
 	        if(myLocation!=null){
 	            onLocationChanged(myLocation);
-	            mMapHandle.findMyLocation(myLocation);
+	            
 	        }
 	        else
 	        {
@@ -89,6 +84,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	        if (savedInstanceState == null) {
 				getSupportFragmentManager().beginTransaction()
 						.add(R.id.container, fragment).commit();
+				mMapHandle.findMyLocation(myLocation);
 	    }
 	
 		
@@ -98,17 +94,16 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	}
 	 /* Request updates at startup */
 	 @Override
-	 protected void onResume() {
+	protected void onResume() {
 	    super.onResume();
-	    locationManager.requestLocationUpdates(provider, 1000, 1, this);
+	    locationManager.requestLocationUpdates(provider, 400, 1, this);
 	  }
 	 
 	 @Override
-	  protected void onPause() {
+	protected void onPause() {
 	    super.onPause();
 	    locationManager.removeUpdates(this);
 	  }
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,6 +135,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		}
 		
 	}
+	
 	public void openAboutActivity()
 	{
 		Intent intent = new Intent(this, AboutActivity.class);
@@ -151,6 +147,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		Intent intent = new Intent(this, SettingsActivity.class);
 	    startActivity(intent);
 	}
+	
 	public void calculateClickHandler(View v)
 	{
 		 
@@ -201,7 +198,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		// TODO Auto-generated method stub
 		myLocation=arg0;
 		myLatLng=mMapHandle.convertLocationToLatLng(myLocation);
-		
+		//Toast.makeText(this, myLatLng.toString(), Toast.LENGTH_LONG).show();
 	}
 
 	@Override

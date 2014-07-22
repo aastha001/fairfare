@@ -19,9 +19,6 @@ public class MapHandler   {
 		this.activity=activity;
 		map=((SupportMapFragment) activity.getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
-	
-		
-	
 	}
 	
 	public void findMyLocation(Location myLocation)
