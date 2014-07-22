@@ -7,7 +7,7 @@
     	android:paddingLeft="@dimen/activity_horizontal_margin"
     	android:paddingRight="@dimen/activity_horizontal_margin"
     	android:paddingTop="@dimen/activity_vertical_margin"
-    	tools:context="com.maingmagic.fairfare.FareCardFragment" 
+    	tools:context="com.makingmagic.fairfare.FareCardFragment" 
         android:orientation="vertical">
 	    <TextView
                 android:id="@+id/tv_src"

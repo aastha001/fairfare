@@ -1,4 +1,6 @@
-package com.maingmagic.fairfare;
+package com.makingmagic.fairfare;
+
+import com.maingmagic.fairfare.R;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;

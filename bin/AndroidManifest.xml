@@ -30,7 +30,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.makingmagic.fairfare.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,17 +47,17 @@
             android:value="AIzaSyADMOlhS_Jq3afIyhdrPi0hJJCnkdMg_ew" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.makingmagic.fairfare.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.makingmagic.fairfare.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.maingmagic.fairfare.MainActivity" />
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name="com.makingmagic.fairfare.AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.makingmagic.fairfare.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.maingmagic.fairfare.MainActivity" />
