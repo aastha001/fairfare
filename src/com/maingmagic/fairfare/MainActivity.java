@@ -52,13 +52,18 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		case R.id.action_about:
 		case R.id.collapse_about:
-			//openAboutActivity();
+			openAboutActivity();
 			return true;
 			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 		
+	}
+	public void openAboutActivity()
+	{
+		Intent intent = new Intent(this, AboutActivity.class);
+	    startActivity(intent);
 	}
 
 	public void openSettingsActivity()

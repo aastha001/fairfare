@@ -1635,19 +1635,22 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
-        public static final int activity_main=0x7f030018;
-        public static final int activity_settings=0x7f030019;
-        public static final int fragment_curr_fare_card=0x7f03001a;
-        public static final int fragment_fare_card=0x7f03001b;
-        public static final int fragment_input=0x7f03001c;
-        public static final int fragment_set_fare_card=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int activity_about=0x7f030018;
+        public static final int activity_main=0x7f030019;
+        public static final int activity_settings=0x7f03001a;
+        public static final int fragment_curr_fare_card=0x7f03001b;
+        public static final int fragment_fare_card=0x7f03001c;
+        public static final int fragment_input=0x7f03001d;
+        public static final int fragment_set_fare_card=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
-        public static final int main=0x7f0c0000;
-        public static final int settings=0x7f0c0001;
+        public static final int about=0x7f0c0000;
+        public static final int main=0x7f0c0001;
+        public static final int settings=0x7f0c0002;
     }
     public static final class string {
+        public static final int AboutDump=0x7f06003d;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f060021;
@@ -1794,10 +1797,11 @@ containing a value of this type.
         public static final int str_minDist=0x7f060036;
         public static final int str_minFare=0x7f060037;
         public static final int str_send_button=0x7f060030;
-        public static final int str_settings_editFare=0x7f060034;
+        public static final int str_settings_editFare=0x7f060035;
         public static final int str_src_add=0x7f060031;
         public static final int str_update=0x7f060039;
-        public static final int title_activity_settings=0x7f060035;
+        public static final int title_activity_about=0x7f06003c;
+        public static final int title_activity_settings=0x7f060034;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
