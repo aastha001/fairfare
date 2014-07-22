@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <FrameLayout
+        android:id="@+id/container_curr_fare_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".4" >
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_set_fare_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".6" >
+
+    </FrameLayout>
+
+    
+</LinearLayout>
