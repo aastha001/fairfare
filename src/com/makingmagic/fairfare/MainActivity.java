@@ -25,6 +25,7 @@ import com.maingmagic.fairfare.R;
 
 public class MainActivity extends ActionBarActivity implements android.location.LocationListener{
 	
+	
 	public static FairFareEngine mEngine;
 	InputFragment fragment;
 	static EditText etSrc;
@@ -242,23 +243,49 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		
 		
 	}
-public static class NoPointsFragment extends Fragment {
-		
-		public NoPointsFragment() {
+public static class ErrorFragment extends Fragment {
+	private static final String EXTRA_HELP = "com.makingmagic.fairfare.EXTRA_HELP";
+	public static final String EXTRA_CAUSE = "com.makingmagic.fairfare.EXTRA_CAUSE";
+		String cause,help;
+		public ErrorFragment(/*String cause, String help*/) {
 			
-			
+			/*this.cause=cause;
+			this.help=help;*/
 			
 		}
+		public static final ErrorFragment newInstance(String cause, String help) {
+			ErrorFragment fragment = new ErrorFragment();
+
+	        final Bundle args = new Bundle(1);
+	        args.putString(EXTRA_CAUSE, cause);
+	        args.putString(EXTRA_HELP, help);
+	        fragment.setArguments(args);
+
+	        return fragment;
+	    }
 		
-		
+		@Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        cause = getArguments().getString(EXTRA_CAUSE);
+	        help=getArguments().getString(EXTRA_HELP);
+	    }
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_no_points, container,
+			View rootView = inflater.inflate(R.layout.fragment_error, container,
 					false);
+			
 			return rootView;
 		}
-		
+		@Override
+	    public void onViewCreated(View view, Bundle savedInstanceState) {
+	        super.onViewCreated(view, savedInstanceState);
+	        TextView tvCause=(TextView)view.findViewById(R.id.error_cause);
+			TextView tvHelp=(TextView)view.findViewById(R.id.error_help);
+			tvCause.setText(cause);
+			tvHelp.setText(help);
+	    }
 		
 	}
 	

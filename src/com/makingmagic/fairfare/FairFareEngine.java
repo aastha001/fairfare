@@ -36,7 +36,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.maingmagic.fairfare.R;
 import com.makingmagic.fairfare.MainActivity.FareCardFragment;
-import com.makingmagic.fairfare.MainActivity.NoPointsFragment;
+import com.makingmagic.fairfare.MainActivity.ErrorFragment;
 
 public class FairFareEngine   {
 	GoogleMap map;
@@ -481,17 +481,27 @@ public class FairFareEngine   {
 	        @Override
 	      protected void onPostExecute(DirectionsJSONParser parsedResult)
 	      {
+	        	if(parsedResult==null)
+	        	{
+	        		String cause=activity.getString(R.string.str_noObj_cause);
+	            	String help=activity.getString(R.string.str_noObj_help);
+	       		 	ErrorFragment newFragment=ErrorFragment.newInstance(cause,help);
+	       		 	//replace fragment in container with new fragment
+	       		 	activity.getSupportFragmentManager().popBackStack();
+	       		 	activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
+	       		 	return;
+	        	}
 	            ArrayList<LatLng> points = null;
 	            PolylineOptions lineOptions = null;
 	            List<List<HashMap<String, String>>> routes=new ArrayList<List<HashMap<String, String>>>();
 	            routes=parsedResult.getRoutes();
 	            if (routes==null||routes.size() < 1)
 	            {
-	            	/*
-	            	 * Add Code to put in a different fragment
-	            	 */
-	            	//Create a fragment with the loaded details
-	       		 	NoPointsFragment newFragment=new NoPointsFragment();
+	            	
+	            	//Create a fragment with the loaded error details
+	            	String cause=activity.getString(R.string.str_noPoints_cause);
+	            	String help=activity.getString(R.string.str_noPoints_help);
+	       		 	ErrorFragment newFragment=ErrorFragment.newInstance(cause,help);
 	       		 	//replace fragment in container with new fragment
 	       		 	activity.getSupportFragmentManager().popBackStack();
 	       		 	activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
