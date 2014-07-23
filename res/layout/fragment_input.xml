@@ -33,6 +33,7 @@
                 android:id="@+id/imageButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onMyLocClick"
                 android:src="@drawable/ic_action_location_found" />
 
         </TableRow>
@@ -55,6 +56,7 @@
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onSwapClick"
                 android:src="@drawable/ic_action_import_export" />
 
         </TableRow>

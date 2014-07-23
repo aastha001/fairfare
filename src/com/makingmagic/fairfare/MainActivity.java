@@ -8,12 +8,15 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
@@ -23,17 +26,21 @@ public class MainActivity extends ActionBarActivity implements android.location.
 
 	MapHandler mMapHandle;
 	InputFragment fragment;
-	private LocationManager locationManager;
+	static EditText etSrc;
+	static EditText etDest;
+	private static LocationManager locationManager;
 	private String provider;
-	Location myLocation;
-	LatLng myLatLng;
+	static Location myLocation;
+	static LatLng myLatLng;
+	boolean located;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		
+		mMapHandle=new MapHandler(this);
+		fragment=new InputFragment();
 		
 		// Getting Google Play availability status
 	    int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
@@ -47,8 +54,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 
 	    }else { // Google Play Services are available
 
-	    	mMapHandle=new MapHandler(this);
-			fragment=new InputFragment();
+	    	
 
 	        // Getting LocationManager object from System Service LOCATION_SERVICE
 	        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -82,9 +88,12 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	       
 	        
 	        if (savedInstanceState == null) {
+	        	
 				getSupportFragmentManager().beginTransaction()
 						.add(R.id.container, fragment).commit();
+				
 				mMapHandle.findMyLocation(myLocation);
+				
 	    }
 	
 		
@@ -153,9 +162,38 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		 
 		getSupportFragmentManager().beginTransaction().replace(R.id.container,new FareCardFragment()).addToBackStack(null).commit();
 	}
+	
+	/*
+	 * Sets the Source EditText to the current Latitude and Longitude is available
+	 */
+	public void onMyLocClick(View v)	
+	{
+		
+		if(myLocation!=null)
+		{
+			etSrc.setText(myLatLng.latitude+","+myLatLng.longitude);
+		}
+		else
+		{
+			Toast.makeText(this, "Your location is currently unavailable.. Try again later!", Toast.LENGTH_SHORT).show();
+		}
+		
+	}
+	/*
+	 * Swaps the contents of the source and destination textboxes
+	 */
+	
+	public void onSwapClick(View v)
+	{
+		
+		Editable srcString=etSrc.getText();
+		etSrc.setText(etDest.getText());
+		etDest.setText(srcString);
+		
+	}
 
 	/**
-	 * A placeholder fragment containing a simple view.
+	 * An InputFragment Containing the fragment_input view.
 	 */
 	public static class InputFragment extends Fragment {
 		
@@ -171,8 +209,12 @@ public class MainActivity extends ActionBarActivity implements android.location.
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_input, container,
 					false);
+			etSrc=(EditText)rootView.findViewById(R.id.et_src);
+			etDest=(EditText)rootView.findViewById(R.id.et_dest);
 			return rootView;
 		}
+		
+		
 	}
 	
 	public static class FareCardFragment extends Fragment {
