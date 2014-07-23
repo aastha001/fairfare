@@ -481,6 +481,7 @@ public class FairFareEngine   {
 	        @Override
 	      protected void onPostExecute(DirectionsJSONParser parsedResult)
 	      {
+	        	FairFareEngine.this.parsedResult=parsedResult;
 	        	if(parsedResult==null)
 	        	{
 	        		String cause=activity.getString(R.string.str_noObj_cause);
@@ -562,7 +563,7 @@ public class FairFareEngine   {
          //Zooming to view
 		 map.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds(parsedResult.getSwBound().get(0),parsedResult.getNeBound().get(0)), 20));
 		 //Create a fragment with the loaded details
-		 FareCardFragment newFragment=new FareCardFragment(parsedResult);
+		 FareCardFragment newFragment=new FareCardFragment();
 		 //replace fragment in container with new fragment
 		 activity.getSupportFragmentManager().popBackStack();
 		 activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();

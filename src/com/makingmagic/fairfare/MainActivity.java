@@ -291,10 +291,9 @@ public static class ErrorFragment extends Fragment {
 	
 	
 	public static class FareCardFragment extends Fragment {
-		DirectionsJSONParser parsedResult;
-		public FareCardFragment(DirectionsJSONParser parsedResult) {
+		
+		public FareCardFragment() {
 			
-			this.parsedResult=parsedResult;
 			
 		}
 		
@@ -309,14 +308,14 @@ public static class ErrorFragment extends Fragment {
 			TextView tvEstFare=(TextView)rootView.findViewById(R.id.tv_est_fare);
 			TextView tvEstDist=(TextView)rootView.findViewById(R.id.tv_est_dist);
 			TextView tvEstTime=(TextView)rootView.findViewById(R.id.tv_est_time);
-			float dist=(float)parsedResult.getDistanceValue().get(0).get(0);
+			float dist=(float)mEngine.parsedResult.getDistanceValue().get(0).get(0);
 			float fare=mEngine.getFare(dist);
 			
-			tvStartAdd.setText(parsedResult.getStartAddress().get(0).get(0));
-			tvDestAdd.setText(parsedResult.getEndAddress().get(0).get(0));
+			tvStartAdd.setText(mEngine.parsedResult.getStartAddress().get(0).get(0));
+			tvDestAdd.setText(mEngine.parsedResult.getEndAddress().get(0).get(0));
 			tvEstFare.setText(Float.toString(fare));
-			tvEstDist.setText(parsedResult.getDistanceString().get(0).get(0));
-			tvEstTime.setText(parsedResult.getDurationString().get(0).get(0));
+			tvEstDist.setText(mEngine.parsedResult.getDistanceString().get(0).get(0));
+			tvEstTime.setText(mEngine.parsedResult.getDurationString().get(0).get(0));
 			
 			return rootView;
 		}
