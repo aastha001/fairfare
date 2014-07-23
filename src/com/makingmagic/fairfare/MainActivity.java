@@ -308,14 +308,14 @@ public static class ErrorFragment extends Fragment {
 			TextView tvEstFare=(TextView)rootView.findViewById(R.id.tv_est_fare);
 			TextView tvEstDist=(TextView)rootView.findViewById(R.id.tv_est_dist);
 			TextView tvEstTime=(TextView)rootView.findViewById(R.id.tv_est_time);
-			float dist=(float)mEngine.parsedResult.getDistanceValue().get(0).get(0);
+			float dist=(float)FairFareEngine.parsedResult.getDistanceValue().get(0).get(0);
 			float fare=mEngine.getFare(dist);
 			
-			tvStartAdd.setText(mEngine.parsedResult.getStartAddress().get(0).get(0));
-			tvDestAdd.setText(mEngine.parsedResult.getEndAddress().get(0).get(0));
+			tvStartAdd.setText(FairFareEngine.parsedResult.getStartAddress().get(0).get(0));
+			tvDestAdd.setText(FairFareEngine.parsedResult.getEndAddress().get(0).get(0));
 			tvEstFare.setText(Float.toString(fare));
-			tvEstDist.setText(mEngine.parsedResult.getDistanceString().get(0).get(0));
-			tvEstTime.setText(mEngine.parsedResult.getDurationString().get(0).get(0));
+			tvEstDist.setText(FairFareEngine.parsedResult.getDistanceString().get(0).get(0));
+			tvEstTime.setText(FairFareEngine.parsedResult.getDurationString().get(0).get(0));
 			
 			return rootView;
 		}

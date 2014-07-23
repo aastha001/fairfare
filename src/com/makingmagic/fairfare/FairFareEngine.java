@@ -42,7 +42,7 @@ public class FairFareEngine   {
 	GoogleMap map;
 	FragmentActivity activity;
 	ArrayList<LatLng> markerPoints;
-	DirectionsJSONParser parsedResult;
+	public static DirectionsJSONParser parsedResult;
 	float farePerKm, minFare, minDist,estDist,estFare;
 	
 	public FairFareEngine(FragmentActivity activity)
@@ -481,7 +481,7 @@ public class FairFareEngine   {
 	        @Override
 	      protected void onPostExecute(DirectionsJSONParser parsedResult)
 	      {
-	        	FairFareEngine.this.parsedResult=parsedResult;
+	        	FairFareEngine.parsedResult=parsedResult;
 	        	if(parsedResult==null)
 	        	{
 	        		String cause=activity.getString(R.string.str_noObj_cause);
