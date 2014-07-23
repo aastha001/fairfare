@@ -20,10 +20,15 @@
                 android:id="@+id/TextView06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_span="2"
                 android:text="@string/str_settings_editFare"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
 
+        </TableRow>
+		<View
+        	android:layout_height="2dip"
+        	android:background="#FF0000" />
         <TableRow
             android:id="@+id/TableRow16"
             android:layout_width="wrap_content"

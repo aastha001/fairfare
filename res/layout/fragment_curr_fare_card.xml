@@ -20,9 +20,18 @@
                 android:id="@+id/TextView02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_span="2"
                 android:text="@string/str_current_fare_card"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
         </TableRow>
+      
+    	<View
+        	android:layout_height="2dip"
+        	android:background="#FF0000" />
+ 
+    
 
         <TableRow
             android:id="@+id/TableRow04"
