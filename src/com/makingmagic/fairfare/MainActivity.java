@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	        }
 	        else
 	        {
-	        	locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+	        	locationManager.requestLocationUpdates(provider, 0, 0, this);
 	        	
 	        }
 	       

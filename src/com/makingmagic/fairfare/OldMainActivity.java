@@ -22,7 +22,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
 import com.maingmagic.fairfare.R;
 
-public class OldMainActivity extends ActionBarActivity implements android.location.LocationListener{
+public class MainActivity extends ActionBarActivity implements android.location.LocationListener{
 
 	MapHandler mMapHandle;
 	InputFragment fragment;
@@ -229,7 +229,7 @@ public class OldMainActivity extends ActionBarActivity implements android.locati
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_fare_card, container,
+			View rootView = inflater.inflate(R.layout.fragment_result_card, container,
 					false);
 			return rootView;
 		}

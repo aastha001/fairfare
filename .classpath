@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="com/makingmagic/fairfare/OldMainActivity.java|com/makingmagic/fairfare/MapHandler.java" kind="src" path="src"/>
+	<classpathentry excluding="com/makingmagic/fairfare/OldMainActivity.java|com/makingmagic/fairfare/BackupOfNewMainActivity.java|com/makingmagic/fairfare/OutMainActivity.java|com/makingmagic/fairfare/MapHandler.java" kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>

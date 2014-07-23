@@ -28,6 +28,9 @@ public class SettingsActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_settings);
 		
 		if (savedInstanceState == null) {
+			/*
+			 * Load the two Fare card and edit fare card fragments into their containers
+			 */
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container_curr_fare_card, new CurrentFareCardFragment())
 					.add(R.id.container_set_fare_card, new SetFareCardFragment()).commit();
@@ -73,10 +76,13 @@ public class SettingsActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View v = inflater.inflate(R.layout.fragment_curr_fare_card, container,
 					false);
+			/*
+			 * Update the Fare card TextViews to reflect latest values as indicated by the preferences.
+			 */
 			TextView tvMinFare=(TextView)v.findViewById(R.id.tv_curr_minFare);
 			TextView tvMinDist=(TextView)v.findViewById(R.id.tv_curr_minDist);
 			TextView tvFarePerKm=(TextView)v.findViewById(R.id.tv_curr_farePerKm);
-			/*SharedPreferences prefs=getActivity().getPreferences(Context.MODE_PRIVATE);*/
+			
 			SharedPreferences prefs = getActivity().getSharedPreferences(
 					getActivity().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
@@ -103,6 +109,9 @@ public class SettingsActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View v = inflater.inflate(R.layout.fragment_set_fare_card, container,
 					false);
+			/*
+			 * Locate and remember the EditTexts for setting the values
+			 */
 			etMinFare=(EditText)v.findViewById(R.id.et_set_minFare);
 			etMinDist=(EditText)v.findViewById(R.id.et_set_minDist);
 			etFarePerKm=(EditText)v.findViewById(R.id.et_set_farePerKm);
@@ -112,6 +121,9 @@ public class SettingsActivity extends ActionBarActivity {
 	
 	public void onUpdateClick(View v)
 	{
+		/*
+		 * Obtain values from EditTexts,ensure they're formatted okay and update the values through the engine
+		 */
 		try{
 			float minFare=Float.parseFloat(etMinFare.getText().toString());
 			float minDist=Float.parseFloat(etMinDist.getText().toString());
@@ -133,8 +145,12 @@ public class SettingsActivity extends ActionBarActivity {
 	
 	public void onDefaultsClick(View v)
 	{
+		/*
+		 * Restore to defaults as defined by the strings.xml files through the engine
+		 */
 		MainActivity.mEngine.resetToDefaultFareData(this);
 		getSupportFragmentManager().beginTransaction()
 		.replace(R.id.container_curr_fare_card, new CurrentFareCardFragment()).commit();
 	}
+
 }
