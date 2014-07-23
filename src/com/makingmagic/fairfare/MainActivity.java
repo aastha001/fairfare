@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -160,7 +161,13 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	public void calculateClickHandler(View v)
 	{
 		 
-		getSupportFragmentManager().beginTransaction().replace(R.id.container,new FareCardFragment()).addToBackStack(null).commit();
+		getSupportFragmentManager().beginTransaction().replace(R.id.container,new LoadingFragment()).addToBackStack(null).commit();
+		String origin=etSrc.getText().toString();
+		String dest=etDest.getText().toString();
+		etSrc.setText("");
+		etDest.setText("");
+		mEngine.getDataAndProcess(origin, dest);
+		
 	}
 	
 	/*
@@ -216,10 +223,9 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		
 		
 	}
-	
-	public static class FareCardFragment extends Fragment {
+	public static class LoadingFragment extends Fragment {
 		
-		public FareCardFragment() {
+		public LoadingFragment() {
 			
 			
 			
@@ -229,8 +235,62 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_loading, container,
+					false);
+			return rootView;
+		}
+		
+		
+	}
+public static class NoPointsFragment extends Fragment {
+		
+		public NoPointsFragment() {
+			
+			
+			
+		}
+		
+		
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_no_points, container,
+					false);
+			return rootView;
+		}
+		
+		
+	}
+	
+	
+	public static class FareCardFragment extends Fragment {
+		DirectionsJSONParser parsedResult;
+		public FareCardFragment(DirectionsJSONParser parsedResult) {
+			
+			this.parsedResult=parsedResult;
+			
+		}
+		
+		
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_result_card, container,
 					false);
+			TextView tvStartAdd=(TextView)rootView.findViewById(R.id.tv_src);
+			TextView tvDestAdd=(TextView)rootView.findViewById(R.id.tv_dest);
+			TextView tvEstFare=(TextView)rootView.findViewById(R.id.tv_est_fare);
+			TextView tvEstDist=(TextView)rootView.findViewById(R.id.tv_est_dist);
+			TextView tvEstTime=(TextView)rootView.findViewById(R.id.tv_est_time);
+			float dist=(float)parsedResult.getDistanceValue().get(0).get(0);
+			float fare=mEngine.getFare(dist);
+			
+			tvStartAdd.setText(parsedResult.getStartAddress().get(0).get(0));
+			tvDestAdd.setText(parsedResult.getEndAddress().get(0).get(0));
+			tvEstFare.setText(Float.toString(fare));
+			tvEstDist.setText(parsedResult.getDistanceString().get(0).get(0));
+			tvEstTime.setText(parsedResult.getDurationString().get(0).get(0));
+			
 			return rootView;
 		}
 	}

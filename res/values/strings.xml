@@ -27,6 +27,9 @@
     
     <string name="value_minFare">20.0</string>
     <string name="value_farePerKm">10.0</string><string name="value_minDist">2.0</string>
+    <string name="str_noPoints_sorry">Sorry! :(</string>
+    <string name="str_noPoints_noRoutes">No routes found.</string>
+    <string name="str_noPoints_help">Perhaps changing your search terms would help.\nYou could try:\n1. Ensuring the spelling and (if possible, the capitalization) is correct.\n2. Add a comma (,) and a generic locality name (district, city, state, etc)\n3. Try looking for other landmarks close to what you are looking for.</string>
     
 
 </resources>
