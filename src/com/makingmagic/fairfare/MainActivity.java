@@ -23,8 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.maingmagic.fairfare.R;
 
 public class MainActivity extends ActionBarActivity implements android.location.LocationListener{
-
-	MapHandler mMapHandle;
+	
+	public static FairFareEngine mEngine;
 	InputFragment fragment;
 	static EditText etSrc;
 	static EditText etDest;
@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		mMapHandle=new MapHandler(this);
+		mEngine=new FairFareEngine(this);
 		fragment=new InputFragment();
 		
 		// Getting Google Play availability status
@@ -92,7 +92,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 				getSupportFragmentManager().beginTransaction()
 						.add(R.id.container, fragment).commit();
 				
-				mMapHandle.findMyLocation(myLocation);
+				mEngine.findMyLocation(myLocation);
 				
 	    }
 	
@@ -229,7 +229,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_fare_card, container,
+			View rootView = inflater.inflate(R.layout.fragment_result_card, container,
 					false);
 			return rootView;
 		}
@@ -239,7 +239,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	public void onLocationChanged(Location arg0) {
 		// TODO Auto-generated method stub
 		myLocation=arg0;
-		myLatLng=mMapHandle.convertLocationToLatLng(myLocation);
+		myLatLng=mEngine.convertLocationToLatLng(myLocation);
 		//Toast.makeText(this, myLatLng.toString(), Toast.LENGTH_LONG).show();
 	}
 

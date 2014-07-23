@@ -1,0 +1,60 @@
+<LinearLayout
+    	xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+    	android:paddingLeft="@dimen/activity_horizontal_margin"
+    	android:paddingRight="@dimen/activity_horizontal_margin"
+    	android:paddingTop="@dimen/activity_vertical_margin"
+    	tools:context="com.makingmagic.fairfare.FareCardFragment" 
+        android:orientation="vertical">
+	    <TextView
+                android:id="@+id/tv_src"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:ems="10"
+                android:gravity="left"
+                android:text="From : Jayanagar, Bangalore, India" />
+	    
+
+       <TextView
+                android:id="@+id/tv_dest"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:gravity="left"
+                android:ems="10"
+                android:text="To : Indiranagar, Bangalore, India" />
+       
+       <TextView
+                android:id="@+id/tv_est_dist"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:gravity="left"
+                android:ems="10"
+                android:text="Esitmated Distance : 11.2 km" />
+       <TextView
+                android:id="@+id/tv_est_time"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:gravity="left"
+                android:ems="10"
+                android:text="Estimated Duration: 30 mins" />
+       
+       <TextView
+                android:id="@+id/tv_est_fare"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:gravity="left"
+                android:ems="10"
+                android:text="Estimated Fare: Rs. 120" />
+       
+
+</LinearLayout>
+
+

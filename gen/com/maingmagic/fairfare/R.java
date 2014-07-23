@@ -1500,7 +1500,7 @@ containing a value of this type.
         public static final int always=0x7f08001e;
         public static final int beginning=0x7f080023;
         public static final int book_now=0x7f080010;
-        public static final int button1=0x7f08006b;
+        public static final int button1=0x7f080066;
         public static final int button2=0x7f08007a;
         public static final int buyButton=0x7f08000a;
         public static final int buy_now=0x7f08000f;
@@ -1519,11 +1519,11 @@ containing a value of this type.
         public static final int dropdown=0x7f080022;
         public static final int edit_query=0x7f080042;
         public static final int end=0x7f080025;
-        public static final int et_dest=0x7f080068;
+        public static final int et_dest=0x7f080063;
         public static final int et_set_farePerKm=0x7f080078;
         public static final int et_set_minDist=0x7f080075;
         public static final int et_set_minFare=0x7f080072;
-        public static final int et_src=0x7f080065;
+        public static final int et_src=0x7f080060;
         public static final int expand_activities_button=0x7f080038;
         public static final int expanded_menu=0x7f08003e;
         public static final int grayscale=0x7f080012;
@@ -1535,8 +1535,8 @@ containing a value of this type.
         public static final int icon=0x7f08003c;
         public static final int ifRoom=0x7f08001d;
         public static final int image=0x7f080039;
-        public static final int imageButton1=0x7f080066;
-        public static final int imageButton2=0x7f080069;
+        public static final int imageButton1=0x7f080061;
+        public static final int imageButton2=0x7f080064;
         public static final int listMode=0x7f080014;
         public static final int list_item=0x7f08003b;
         public static final int main_layout=0x7f08004e;
@@ -1548,7 +1548,7 @@ containing a value of this type.
         public static final int none=0x7f080000;
         public static final int normal=0x7f080001;
         public static final int production=0x7f080007;
-        public static final int progressBar1=0x7f08006c;
+        public static final int progressBar1=0x7f080067;
         public static final int progress_circular=0x7f08002a;
         public static final int progress_horizontal=0x7f08002b;
         public static final int radio=0x7f080041;
@@ -1573,20 +1573,20 @@ containing a value of this type.
         public static final int strict_sandbox=0x7f080009;
         public static final int submit_area=0x7f08004b;
         public static final int tabMode=0x7f080015;
-        public static final int tableRow1=0x7f080064;
-        public static final int tableRow2=0x7f080067;
-        public static final int tableRow3=0x7f08006a;
+        public static final int tableRow1=0x7f08005f;
+        public static final int tableRow2=0x7f080062;
+        public static final int tableRow3=0x7f080065;
         public static final int terrain=0x7f080003;
         public static final int title=0x7f08003d;
         public static final int top_action_bar=0x7f080032;
         public static final int tv_curr_farePerKm=0x7f08005e;
         public static final int tv_curr_minDist=0x7f08005b;
         public static final int tv_curr_minFare=0x7f080058;
-        public static final int tv_dest=0x7f080060;
-        public static final int tv_est_dist=0x7f080061;
-        public static final int tv_est_fare=0x7f080063;
-        public static final int tv_est_time=0x7f080062;
-        public static final int tv_src=0x7f08005f;
+        public static final int tv_dest=0x7f080069;
+        public static final int tv_est_dist=0x7f08006a;
+        public static final int tv_est_fare=0x7f08006c;
+        public static final int tv_est_time=0x7f08006b;
+        public static final int tv_src=0x7f080068;
         public static final int up=0x7f080033;
         public static final int useLogo=0x7f080016;
         public static final int withText=0x7f08001f;
@@ -1647,9 +1647,9 @@ containing a value of this type.
         public static final int activity_main=0x7f030019;
         public static final int activity_settings=0x7f03001a;
         public static final int fragment_curr_fare_card=0x7f03001b;
-        public static final int fragment_fare_card=0x7f03001c;
-        public static final int fragment_input=0x7f03001d;
-        public static final int fragment_loading=0x7f03001e;
+        public static final int fragment_input=0x7f03001c;
+        public static final int fragment_loading=0x7f03001d;
+        public static final int fragment_result_card=0x7f03001e;
         public static final int fragment_set_fare_card=0x7f03001f;
         public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
@@ -1659,7 +1659,7 @@ containing a value of this type.
         public static final int settings=0x7f0c0002;
     }
     public static final class string {
-        public static final int AboutDump=0x7f06003d;
+        public static final int AboutDump=0x7f06003e;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f060021;
@@ -1799,6 +1799,13 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f06001e;
         public static final int hello_world=0x7f06002e;
+        public static final int preference_file_key=0x7f06003d;
+        public static final int saved_default_farePerKm=0x7f060043;
+        public static final int saved_default_minDist=0x7f060044;
+        public static final int saved_default_minFare=0x7f060042;
+        public static final int saved_farePerKm=0x7f060040;
+        public static final int saved_minDist=0x7f060041;
+        public static final int saved_minFare=0x7f06003f;
         public static final int str_current_fare_card=0x7f06003a;
         public static final int str_default=0x7f06003b;
         public static final int str_dest_add=0x7f060033;
@@ -1811,6 +1818,9 @@ containing a value of this type.
         public static final int str_update=0x7f060039;
         public static final int title_activity_about=0x7f06003c;
         public static final int title_activity_settings=0x7f060034;
+        public static final int value_farePerKm=0x7f060046;
+        public static final int value_minDist=0x7f060047;
+        public static final int value_minFare=0x7f060045;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

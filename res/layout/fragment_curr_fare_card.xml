@@ -49,7 +49,7 @@
                 android:id="@+id/tv_curr_minFare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rs 20"
+                android:text="@string/value_minFare"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
 
@@ -69,7 +69,7 @@
                 android:id="@+id/tv_curr_minDist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2 km"
+                android:text="@string/value_minDist"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
 
@@ -89,7 +89,7 @@
                 android:id="@+id/tv_curr_farePerKm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rs 10"
+                android:text="@string/value_farePerKm"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
     </TableLayout>
