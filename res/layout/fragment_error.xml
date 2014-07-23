@@ -10,32 +10,49 @@
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbars="none"
             android:text="@string/str_noPoints_sorry"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/error_cause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/str_noPoints_cause"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/error_help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_margin="5dp"
             android:layout_weight="4"
-            android:gravity="fill"
-            android:text="@string/str_noPoints_help"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:padding="5dp"
+            android:scrollbars="vertical|horizontal" >
+
+            <TextView
+                android:id="@+id/error_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="fill"
+                android:maxLines="30"
+                android:overScrollMode="ifContentScrolls"
+                android:scrollHorizontally="true"
+                android:text="@string/str_noPoints_help"
+                android:textAlignment="gravity"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        </ScrollView>
 
 </TableLayout>
 
