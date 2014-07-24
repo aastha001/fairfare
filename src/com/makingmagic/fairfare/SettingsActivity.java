@@ -55,12 +55,23 @@ public class SettingsActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_clear)
+		{
+			clear();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+	public void clear()
+	{
+		
+		EditText et= (EditText)findViewById(R.id.et_set_minDist);
+		if(et!=null)et.setText("");
+		et=(EditText)findViewById(R.id.et_set_minFare);
+		if(et!=null)et.setText("");
+		et=(EditText)findViewById(R.id.et_set_farePerKm);
+		if(et!=null)et.setText("");
+	}
 	public static class CurrentFareCardFragment extends Fragment {
 		
 		public CurrentFareCardFragment() {

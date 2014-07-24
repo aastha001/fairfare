@@ -30,11 +30,12 @@
     <string name="str_noPoints_sorry">Sorry! :(</string>
     <string name="str_noPoints_cause">No routes found.</string>
     <string name="str_noPoints_help">Perhaps changing your search terms would help.\nYou could try:\n1. Ensuring the spelling and (if possible, the capitalization) is correct.\n2. Add a comma (,) and a generic locality name (district, city, state, etc)\n3. Try looking for other landmarks close to what you are looking for.</string>
-    <string name="str_noObj_cause">No data recieved.</string>
+    <string name="str_noObj_cause">No data received.</string>
     <string name="str_noObj_help">Check your internet connectivity and try again..</string>
     <string name="app_version">Alpha 0.1</string>
     <string name="app_about">About:\nThis app is an open source project which provides the estimated fare between a source and a destination by using the Goole Maps and Directions APIs.\n\nUse:\n&gt;Enter the source and destination addresses and click on calculate\n&gt;Alternately, click on two points on the map to set the end points\n\nNotes:\nThe fare and duration are subject to traffic conditions.\n\nDisclaimer:\nThe values, directions and any other information provided in this app are purely indicative and comes with no guarantees or warranties (express or implied) of any kind. Use it Wisely.</string>
-    <string name="app_creator">By Chirag Ravindra</string>
+    <string name="action_clear">Clear</string><string name="app_creator">By Chirag Ravindra</string>
+    
     
 
 </resources>

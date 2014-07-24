@@ -140,6 +140,9 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		case R.id.collapse_about:
 			openAboutActivity();
 			return true;
+		case R.id.collapse_clear:
+			clear();
+			return true;
 			
 		default:
 			return super.onOptionsItemSelected(item);
@@ -157,6 +160,16 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	{
 		Intent intent = new Intent(this, SettingsActivity.class);
 	    startActivity(intent);
+	}
+	
+	public void clear()
+	{
+		mEngine.map.clear();
+		mEngine.findMyLocation(myLocation);
+		EditText et= (EditText)findViewById(R.id.et_src);
+		if(et!=null)et.setText("");
+		et=(EditText)findViewById(R.id.et_dest);
+		if(et!=null)et.setText("");
 	}
 	
 	public void calculateClickHandler(View v)

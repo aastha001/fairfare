@@ -1491,6 +1491,7 @@ containing a value of this type.
         public static final int action_bar_root=0x7f08002c;
         public static final int action_bar_subtitle=0x7f080035;
         public static final int action_bar_title=0x7f080034;
+        public static final int action_clear=0x7f08008b;
         public static final int action_context_bar=0x7f08002f;
         public static final int action_menu_divider=0x7f080028;
         public static final int action_menu_presenter=0x7f080029;
@@ -1508,8 +1509,9 @@ containing a value of this type.
         public static final int checkbox=0x7f08003f;
         public static final int classic=0x7f080011;
         public static final int collapseActionView=0x7f080020;
-        public static final int collapse_about=0x7f080089;
-        public static final int collapse_settings=0x7f080088;
+        public static final int collapse_about=0x7f08008a;
+        public static final int collapse_clear=0x7f080088;
+        public static final int collapse_settings=0x7f080089;
         public static final int container=0x7f080055;
         public static final int container_curr_fare_card=0x7f080056;
         public static final int container_set_fare_card=0x7f080057;
@@ -1713,9 +1715,10 @@ containing a value of this type.
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f06002b;
         public static final int action_about=0x7f060032;
+        public static final int action_clear=0x7f06004f;
         public static final int action_settings=0x7f06002f;
         public static final int app_about=0x7f06004e;
-        public static final int app_creator=0x7f06004f;
+        public static final int app_creator=0x7f060050;
         public static final int app_name=0x7f06002d;
         public static final int app_version=0x7f06004d;
         public static final int auth_client_needs_enabling_title=0x7f060001;
