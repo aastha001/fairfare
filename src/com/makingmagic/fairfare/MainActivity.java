@@ -175,7 +175,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	public void calculateClickHandler(View v)
 	{
 		 
-		getSupportFragmentManager().beginTransaction().replace(R.id.container,new LoadingFragment()).addToBackStack(null).commit();
+		/*getSupportFragmentManager().beginTransaction().replace(R.id.container,new LoadingFragment()).addToBackStack(null).commit();*/
 		String origin=etSrc.getText().toString();
 		String dest=etDest.getText().toString();
 		etSrc.setText("");

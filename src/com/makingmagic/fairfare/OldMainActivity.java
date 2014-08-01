@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -22,9 +23,10 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
 import com.maingmagic.fairfare.R;
 
-public class MainActivity extends ActionBarActivity implements android.location.LocationListener{
-
-	MapHandler mMapHandle;
+public class OldMainActivity extends ActionBarActivity implements android.location.LocationListener{
+	
+	
+	public static FairFareEngine mEngine;
 	InputFragment fragment;
 	static EditText etSrc;
 	static EditText etDest;
@@ -39,7 +41,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		mMapHandle=new MapHandler(this);
+		mEngine=new FairFareEngine(this);
 		fragment=new InputFragment();
 		
 		// Getting Google Play availability status
@@ -82,7 +84,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	        }
 	        else
 	        {
-	        	locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+	        	locationManager.requestLocationUpdates(provider, 0, 0, this);
 	        	
 	        }
 	       
@@ -92,7 +94,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 				getSupportFragmentManager().beginTransaction()
 						.add(R.id.container, fragment).commit();
 				
-				mMapHandle.findMyLocation(myLocation);
+				mEngine.findMyLocation(myLocation);
 				
 	    }
 	
@@ -138,6 +140,9 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		case R.id.collapse_about:
 			openAboutActivity();
 			return true;
+		case R.id.collapse_clear:
+			clear();
+			return true;
 			
 		default:
 			return super.onOptionsItemSelected(item);
@@ -157,10 +162,26 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	    startActivity(intent);
 	}
 	
+	public void clear()
+	{
+		mEngine.map.clear();
+		mEngine.findMyLocation(myLocation);
+		EditText et= (EditText)findViewById(R.id.et_src);
+		if(et!=null)et.setText("");
+		et=(EditText)findViewById(R.id.et_dest);
+		if(et!=null)et.setText("");
+	}
+	
 	public void calculateClickHandler(View v)
 	{
 		 
-		getSupportFragmentManager().beginTransaction().replace(R.id.container,new FareCardFragment()).addToBackStack(null).commit();
+		/*getSupportFragmentManager().beginTransaction().replace(R.id.container,new LoadingFragment()).addToBackStack(null).commit();*/
+		String origin=etSrc.getText().toString();
+		String dest=etDest.getText().toString();
+		etSrc.setText("");
+		etDest.setText("");
+		mEngine.getDataAndProcess(origin, dest);
+		
 	}
 	
 	/*
@@ -216,11 +237,75 @@ public class MainActivity extends ActionBarActivity implements android.location.
 		
 		
 	}
+	public static class LoadingFragment extends Fragment {
+		
+		public LoadingFragment() {
+			
+			
+			
+		}
+		
+		
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_loading, container,
+					false);
+			return rootView;
+		}
+		
+		
+	}
+public static class ErrorFragment extends Fragment {
+	private static final String EXTRA_HELP = "com.makingmagic.fairfare.EXTRA_HELP";
+	public static final String EXTRA_CAUSE = "com.makingmagic.fairfare.EXTRA_CAUSE";
+		String cause,help;
+		public ErrorFragment(/*String cause, String help*/) {
+			
+			/*this.cause=cause;
+			this.help=help;*/
+			
+		}
+		public static final ErrorFragment newInstance(String cause, String help) {
+			ErrorFragment fragment = new ErrorFragment();
+
+	        final Bundle args = new Bundle(1);
+	        args.putString(EXTRA_CAUSE, cause);
+	        args.putString(EXTRA_HELP, help);
+	        fragment.setArguments(args);
+
+	        return fragment;
+	    }
+		
+		@Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        cause = getArguments().getString(EXTRA_CAUSE);
+	        help=getArguments().getString(EXTRA_HELP);
+	    }
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_error, container,
+					false);
+			
+			return rootView;
+		}
+		@Override
+	    public void onViewCreated(View view, Bundle savedInstanceState) {
+	        super.onViewCreated(view, savedInstanceState);
+	        TextView tvCause=(TextView)view.findViewById(R.id.error_cause);
+			TextView tvHelp=(TextView)view.findViewById(R.id.error_help);
+			tvCause.setText(cause);
+			tvHelp.setText(help);
+	    }
+		
+	}
+	
 	
 	public static class FareCardFragment extends Fragment {
 		
 		public FareCardFragment() {
-			
 			
 			
 		}
@@ -231,6 +316,20 @@ public class MainActivity extends ActionBarActivity implements android.location.
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_result_card, container,
 					false);
+			TextView tvStartAdd=(TextView)rootView.findViewById(R.id.tv_src);
+			TextView tvDestAdd=(TextView)rootView.findViewById(R.id.tv_dest);
+			TextView tvEstFare=(TextView)rootView.findViewById(R.id.tv_est_fare);
+			TextView tvEstDist=(TextView)rootView.findViewById(R.id.tv_est_dist);
+			TextView tvEstTime=(TextView)rootView.findViewById(R.id.tv_est_time);
+			float dist=(float)FairFareEngine.parsedResult.getDistanceValue().get(0).get(0);
+			float fare=mEngine.getFare(dist);
+			
+			tvStartAdd.setText(FairFareEngine.parsedResult.getStartAddress().get(0).get(0));
+			tvDestAdd.setText(FairFareEngine.parsedResult.getEndAddress().get(0).get(0));
+			tvEstFare.setText(Float.toString(fare));
+			tvEstDist.setText(FairFareEngine.parsedResult.getDistanceString().get(0).get(0));
+			tvEstTime.setText(FairFareEngine.parsedResult.getDurationString().get(0).get(0));
+			
 			return rootView;
 		}
 	}
@@ -239,7 +338,7 @@ public class MainActivity extends ActionBarActivity implements android.location.
 	public void onLocationChanged(Location arg0) {
 		// TODO Auto-generated method stub
 		myLocation=arg0;
-		myLatLng=mMapHandle.convertLocationToLatLng(myLocation);
+		myLatLng=mEngine.convertLocationToLatLng(myLocation);
 		//Toast.makeText(this, myLatLng.toString(), Toast.LENGTH_LONG).show();
 	}
 
